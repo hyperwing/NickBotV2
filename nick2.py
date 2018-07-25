@@ -33,12 +33,15 @@ while True:
 		domain = emailList[randint(0, len(emailList)-1)]
 		email = FirstName+'.'+LastName+domain
 		
-		print('email: ' +email)
 		
 		driver.get("https://wayup.pgtb.me/RnZkMG/pbk2V?w=68637949&e=193935051")
 
 		driver.implicitly_wait(5)
 		driver.maximize_window()
+		
+		if counter ==0:
+			currentVoteCount = driver.find_element_by_xpath('//*[@id="my_db_entry_193935051"]/div[2]/span')
+			print('currently has ' + currentVoteCount.text + ' votes')
 
 		#vote_button = driver.find_element_by_css_selector("div.ss_item_main_action_container.item_vote")
 		vote_button = driver.find_element_by_xpath('//*[@id="my_db_entry_193935051"]/div[3]')
@@ -64,6 +67,8 @@ while True:
 		finish = driver.find_element_by_css_selector("#form3_submit_block")
 		finish.click()
 		
+		print('email: ' +email)
+
 		if (int(counter )% 100 == 0) and (counter >0):
 			print('added '+ str(counter) + ' entries')
 		
@@ -75,7 +80,7 @@ while True:
 	except SessionNotCreatedException:
 		print('browser closed')
 		exit()
-	except:
-		print('error'+str(sys.exc_info()[0]))
+	#except:
+	#	print('error'+str(sys.exc_info()[0]))
 
 
