@@ -80,7 +80,7 @@ while True:
 	except SessionNotCreatedException:
 		print('browser closed')
 		exit()
-	#except:
-	#	print('error'+str(sys.exc_info()[0]))
+	except:
+		print('error'+str(sys.exc_info()[0]))
 
 
